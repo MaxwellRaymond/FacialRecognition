@@ -1,7 +1,7 @@
 # Facial Recognition Program
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
-A Python-based facial recognition program that can encode, validate, and recognize faces using the face_recognition and Pillow libraries. Supporting both hog and cnn models and provides a clean command-line interface for training and testing the model.
+A Python-based facial recognition program that can encode, validate, and recognize faces using the face_recognition and Pillow libraries. Supports both hog and cnn models and provides a clean command-line interface for training and testing the model.
 
 ## How To Use
 ### Encoding Faces
