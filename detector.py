@@ -131,3 +131,10 @@ def validate(model: str = "hog"):
                 image_location=str(filepath.absolute()), model=model
             )
 
+if __name__ == "main":
+    if args.train:
+        encode_known_faces(model=args.m)
+    if args.validate:
+        validate(model=args.m)
+    if args.test:
+        recognize_faces(image_location=args.f, model=args.m)
