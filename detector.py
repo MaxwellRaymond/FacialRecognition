@@ -93,6 +93,8 @@ def encode_known_faces(
     with encodings_locations.open(mode="wb") as f:
         pickle.dump(name_encodings, f)
 
+    print("Successfuly trained on data found in /training directory!")
+
 def recognize_faces(
         image_location: str,
         model: str = "hog",
@@ -136,5 +138,6 @@ if __name__ == "__main__":
         encode_known_faces(model=args.m)
     if args.validate:
         validate(model=args.m)
+        print("Validation executed, check if labels match known faces.")
     if args.test:
         recognize_faces(image_location=args.f, model=args.m)
