@@ -22,12 +22,12 @@ parser.add_argument("--test", action="store_true", help="Test the model with an 
 parser.add_argument(
     "-m",
     action="store",
-    default="hog"
+    default="hog",
     choices=["hog", "cnn"],
     help="Which model to use for training: hog (CPU) or cnn (GPU)."
 )
 parser.add_argument("-f", action="store", help="Path to an image with an unknown face.")
-args = parser.parse_args
+args = parser.parse_args()
 
 # Helper functions
 def _recognize_face(unknown_encoding, loaded_encodings):
@@ -131,7 +131,7 @@ def validate(model: str = "hog"):
                 image_location=str(filepath.absolute()), model=model
             )
 
-if __name__ == "main":
+if __name__ == "__main__":
     if args.train:
         encode_known_faces(model=args.m)
     if args.validate:
