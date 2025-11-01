@@ -3,6 +3,7 @@ import face_recognition
 import pickle
 from collections import Counter
 from PIL import Image, ImageDraw, ImageFont
+import argparse
 
 DEFAULT_ENCODINGS_PATH = Path("output/encodings.pkl")
 
@@ -12,6 +13,21 @@ Path("validation").mkdir(exist_ok=True)
 
 BOUNDING_BOX_COLOR = (0,0,255)
 TEXT_COLOR = (255,255,255)
+
+# Input arguements
+parser = argparse.ArgumentParser(description="Recognize faces in images!")
+parser.add_argument("--train", action="store_true", help="Train on input data.")
+parser.add_argument("--validate", action="store_true", help="Validate trained model.")
+parser.add_argument("--test", action="store_true", help="Test the model with an unknown image.")
+parser.add_argument(
+    "-m",
+    action="store",
+    default="hog"
+    choices=["hog", "cnn"],
+    help="Which model to use for training: hog (CPU) or cnn (GPU)."
+)
+parser.add_argument("-f", action="store", help="Path to an image with an unknown face.")
+args = parser.parse_args
 
 # Helper functions
 def _recognize_face(unknown_encoding, loaded_encodings):
@@ -108,5 +124,10 @@ def recognize_faces(
     del draw
     pillow_image.show()
 
-recognize_faces("unknown.jpg")
-recognize_faces("unknown2.jpg")
+def validate(model: str = "hog"):
+    for filepath in Path("validation").rglob("*"):
+        if filepath.is_file() and not filepath.name.startswith("."):
+            recognize_faces(
+                image_location=str(filepath.absolute()), model=model
+            )
+
