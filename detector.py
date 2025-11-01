@@ -47,7 +47,7 @@ def _display_face(draw, bounding_box, name):
     draw.rectangle(((left, top), (right, bottom)), outline=BOUNDING_BOX_COLOR, width=2)
 
     try:
-        font = ImageFont.truetype("fonts/BebasNeue-Regular.ttf", size=30)
+        font = ImageFont.truetype("assets/fonts/BebasNeue-Regular.ttf", size=30)
     except:
         print("Cannot set the font.")
 
@@ -74,10 +74,9 @@ def encode_known_faces(
 ) -> None:
     names = []
     encodings = []
-    image_extensions = {".jpg", ".jpeg", ".png"}
 
     for filepath in Path("training").glob("*/*"):
-        if filepath.suffix.lower() not in image_extensions:
+        if filepath.suffix.lower():
             continue
         name = filepath.parent.name
         image = face_recognition.load_image_file(filepath)
