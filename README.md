@@ -5,7 +5,7 @@ A Python-based facial recognition program that can encode, validate, and recogni
 
 ## How To Use
 ### Encoding Faces
-- Within the `/training` directory create a subdirectory with the name of the person who you want to train the model on.
+- Within the `/training` directory create a subdirectory with the person's name you want to train the model on.
 - Insert as many pictures as you see necessary into this subdirectory.
     - Example format can be found in the /training directory.
 - Run the command `python detector.py --train` to train the model on these faces and save the encodings to /output.
@@ -24,7 +24,7 @@ A Python-based facial recognition program that can encode, validate, and recogni
 - Run the command `python detector.py --test -f path/to/image.jpg` to detect faces in images.
 
 ## Basic Terminal Commands
-- Run `python detector.py --h` OR `python detector.py --help` to view all commands.
+- Run `python detector.py -h` OR `python detector.py -help` to view all commands.
 - For ease of use in this repository I have listed the commands below as well.
     - *-h, --help*    show this help message and exit
     - *--train*      Train on input data.
